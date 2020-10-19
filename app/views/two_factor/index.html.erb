@@ -1,0 +1,6 @@
+<h1>Validate 2FA</h1>
+<%= form_for(@user, :url => session_path(@user), :html => { :role => 'form', :method => 'POST' }) do |f| %>
+  <%= f.hidden_field :email, value: @user.email %>
+  <%= f.text_field :otp_response_code %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,12 @@
+<div>
+  <h1>Setup 2FA authentication</h1>
+
+  <%= @qr_code_svg.html_safe %>
+
+  <p><%= current_user.otp_secret_key.scan(/.{4}/).join(' ') %></p>
+
+  <%= form_tag(two_factor_index_path) do %>
+    <%= text_field_tag :otp_response_code, nil, placeholder: 'OTP Code' %>
+    <%= submit_tag 'Enable 2FA' %>
+  <% end %>
+</div>

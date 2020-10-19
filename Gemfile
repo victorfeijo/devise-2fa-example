@@ -29,10 +29,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise', '~> 4.7.1'
+gem 'active_model_otp', '~> 2.0.1'
+gem 'rqrcode', '~> 1.1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-meta'
+  gem 'pry-rails'
 end
 
 group :development do

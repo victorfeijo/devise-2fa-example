@@ -1,7 +1,5 @@
 class TwoFactorController < ApplicationController
-  before_action :authenticate_user!, except: :validate
-
-  def index; end
+  before_action :authenticate_user!
 
   def new
     provisioning_uri = current_user.provisioning_uri('Devise 2FA Example',

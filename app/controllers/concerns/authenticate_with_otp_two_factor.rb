@@ -17,14 +17,14 @@ module AuthenticateWithOtpTwoFactor
     @user = user
 
     session[:otp_user_id] = user.id
-    render 'two_factor/index'
+
+    render 'two_factor/verify'
   end
 
   def authenticate_user_with_otp_two_factor(user)
     if user.authenticate_otp(user_params[:otp_response_code])
       session.delete(:otp_user_id)
 
-      remember_me(user) if user_params[:remember_me] == '1'
       user.save!
       sign_in(user, event: :authentication)
     else
@@ -34,7 +34,7 @@ module AuthenticateWithOtpTwoFactor
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :remember_me, :otp_response_code)
+    params.require(:user).permit(:email, :password, :otp_response_code)
   end
 
   def find_user

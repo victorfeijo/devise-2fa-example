@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   get 'home', to: 'home#index'
 
-  resources :two_factor, only: %i[index new create]
+  resources :two_factor, only: %i[new create]
 end
